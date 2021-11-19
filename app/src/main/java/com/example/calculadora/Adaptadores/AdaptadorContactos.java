@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.calculadora.Modelos.Contacto;
+import com.example.calculadora.Modelos.Opcion;
 import com.example.calculadora.R;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
 public class AdaptadorContactos  extends RecyclerView.Adapter<AdaptadorContactos.ViewHolder> {
 
     private List<Contacto> Lista;
+    private List<Opcion> opcion;
 
     public AdaptadorContactos(List<Contacto> lista) {
         Lista = lista;
@@ -28,7 +30,10 @@ public class AdaptadorContactos  extends RecyclerView.Adapter<AdaptadorContactos
     public AdaptadorContactos.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
         return new ViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item,viewGroup, false));
+
+
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
@@ -63,6 +68,7 @@ public class AdaptadorContactos  extends RecyclerView.Adapter<AdaptadorContactos
 
         @Override
         public void onClick(View view) {
+
             Intent i= new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+ cont.getTel().getNumeroCompleto()));
 
             view.getContext().startActivity(i);
